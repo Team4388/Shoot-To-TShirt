@@ -39,4 +39,9 @@ public final class Constants {
         public static final int XBOX_DRIVER_ID = 0;
         public static final int XBOX_OPERATOR_ID = 1;
     }
+
+    public static final class HornConstants {
+        public static final int HORN_SOLENOID_ID = 0;
+        //Todo: Change ID with new id on the robot
+    }
 }
