@@ -16,11 +16,11 @@ public class Horn extends SubsystemBase {
   /**
    * Creates a new Horn.
    */
-  public Horn() {
-    m_solenoid = new Solenoid(0);
+  public Horn(Solenoid solenoid) {
+    m_solenoid = solenoid;
   }
 
-  public void hornset(boolean arg) {
+  public void hornSet(boolean arg) {
     m_solenoid.set(arg);
   }
 

@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc4388.robot.Constants.*;
 import frc4388.robot.subsystems.Drive;
+import frc4388.robot.subsystems.Horn;
 import frc4388.robot.subsystems.LED;
 import frc4388.utility.LEDPatterns;
 import frc4388.utility.controller.IHandController;
@@ -35,6 +36,8 @@ public class RobotContainer {
             m_robotMap.leftBackMotor, m_robotMap.rightBackMotor, m_robotMap.driveTrain, m_robotMap.gyroDrive);
 
     private final LED m_robotLED = new LED(m_robotMap.LEDController);
+    
+    private final Horn m_robotHorn = new Horn(m_robotMap.HornSolenoid);
 
     /* Controllers */
     private final XboxController m_driverXbox = new XboxController(OIConstants.XBOX_DRIVER_ID);
@@ -72,6 +75,11 @@ public class RobotContainer {
         new JoystickButton(getOperatorJoystick(), XboxController.A_BUTTON)
                 .whenPressed(() -> m_robotLED.setPattern(LEDPatterns.LAVA_RAINBOW))
                 .whenReleased(() -> m_robotLED.setPattern(LEDConstants.DEFAULT_PATTERN));
+
+        // BWAHHHHHHHHHHHH
+        new JoystickButton(getOperatorJoystick(), XboxController.RIGHT_TRIGGER_AXIS)
+                .whenPressed(() -> m_robotHorn.hornSet(true))
+                .whenReleased(() -> m_robotHorn.hornSet(false));
     }
 
     /**
