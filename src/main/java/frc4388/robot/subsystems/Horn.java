@@ -7,16 +7,21 @@
 
 package frc4388.robot.subsystems;
 
-package edu.wpi.first.wpilibj;
-
+import edu.wpi.first.wpilibj.Solenoid;
+// import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Horn extends SubsystemBase {
+  private Solenoid m_solenoid;
   /**
    * Creates a new Horn.
    */
   public Horn() {
-    Hell
+    m_solenoid = new Solenoid(0);
+  }
+
+  public void hornset(boolean arg) {
+    m_solenoid.set(arg);
   }
 
   @Override
