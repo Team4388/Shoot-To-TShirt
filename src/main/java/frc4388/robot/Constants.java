@@ -44,4 +44,14 @@ public final class Constants {
         public static final int HORN_SOLENOID_ID = 0;
         //Todo: Change ID with new id on the robot
     }
+    public static final class ShooterConstants {
+        public static final int SHOOTER_SOLENOID_0_ID = 1;
+        public static final int SHOOTER_SOLENOID_1_ID = 2;
+        public static final int SHOOTER_SOLENOID_2_ID = 3;
+        public static final int SHOOTER_SOLENOID_3_ID = 4;
+        public static final int SHOOTER_SOLENOID_4_ID = 5;
+        public static final int SHOOTER_SOLENOID_5_ID = 6;
+        public static final int SHOOTER_SOLENOID_6_ID = 7;
+        public static final int SHOOTER_SOLENOID_7_ID = 8;
+    }
 }

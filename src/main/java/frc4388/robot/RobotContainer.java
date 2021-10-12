@@ -43,6 +43,16 @@ public class RobotContainer {
     private final XboxController m_driverXbox = new XboxController(OIConstants.XBOX_DRIVER_ID);
     private final XboxController m_operatorXbox = new XboxController(OIConstants.XBOX_OPERATOR_ID);
 
+    private final Solenoid[] tubes = {
+        m_robotMap.ShooterSolenoid0, 
+        m_robotMap.ShooterSolenoid1,
+        m_robotMap.ShooterSolenoid2,
+        m_robotMap.ShooterSolenoid3,
+        m_robotMap.ShooterSolenoid4,
+        m_robotMap.ShooterSolenoid5,
+        m_robotMap.ShooterSolenoid6,
+        m_robotMap.ShooterSolenoid7};
+
     /**
      * The container for the robot. Contains subsystems, OI devices, and commands.
      */
@@ -67,19 +77,27 @@ public class RobotContainer {
     private void configureButtonBindings() {
         /* Driver Buttons */
         // test command to spin the robot while pressing A on the driver controller
-        new JoystickButton(getDriverJoystick(), XboxController.A_BUTTON)
+        /*new JoystickButton(getDriverJoystick(), XboxController.A_BUTTON)
                 .whileHeld(() -> m_robotDrive.driveWithInput(0, 1));
-
+        */
         /* Operator Buttons */
-        // activates "Lit Mode"
+        // activates ""🔥👌💯" Mode"™⁋
+        /*
         new JoystickButton(getOperatorJoystick(), XboxController.A_BUTTON)
                 .whenPressed(() -> m_robotLED.setPattern(LEDPatterns.LAVA_RAINBOW))
                 .whenReleased(() -> m_robotLED.setPattern(LEDConstants.DEFAULT_PATTERN));
-
-        // BWAHHHHHHHHHHHH
-        new JoystickButton(getOperatorJoystick(), XboxController.RIGHT_TRIGGER_AXIS)
+        */
+        // Fire horn
+        new JoystickButton(getOperatorJoystick(), XboxController.LEFT_TRIGGER_AXIS)
                 .whenPressed(() -> m_robotHorn.hornSet(true))
                 .whenReleased(() -> m_robotHorn.hornSet(false));
+        
+        new JoystickButton(getOperatorJoystick(), XboxController.RIGHT_TRIGGER_AXIS)
+                .whenPressed(() -> new ShootYourShot(true)) /*Fire one per once triger*/
+                .whenReleased(() -> new ShootYourShot(false));
+        
+        
+        
     }
 
     /**

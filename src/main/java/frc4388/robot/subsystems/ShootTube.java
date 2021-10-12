@@ -10,12 +10,13 @@ import edu.wpi.first.wbilib.Solnoid;
 
 public class ShootTube extends SubsystemBase {
   /** Creates a new ShootTube. */
-  public ShootTube() {
-    m_solenoid = new solenoid(0);
+  Solenoid m_solenoids;
+  public ShootTube(Solenoid[] solenoids) {
+    m_solenoids = solenoids;
   }
 
-  public void ShootTubeset(boolean arg) {
-    m_solenoid.set(arg);
+  public void ShootTubeSet(boolean arg, Solenoid tube) {
+    tube.set(arg);
   }
 
   @Override

@@ -70,6 +70,16 @@ public class RobotMap {
         leftBackMotor.setInverted(InvertType.FollowMaster);
         rightBackMotor.setInverted(InvertType.FollowMaster);
     }
-
+    /* Horn subsystem */
     public final Solenoid HornSolenoid =  new Solenoid(HornConstants.HORN_SOLENOID_ID);
+
+    /* Shooter subsystem */
+    public final Solenoid ShooterSolenoid0 = new Solenoid(ShooterConstants.SHOOTER_SOLENOID_0_ID);
+    public final Solenoid ShooterSolenoid1 = new Solenoid(ShooterConstants.SHOOTER_SOLENOID_1_ID);
+    public final Solenoid ShooterSolenoid2 = new Solenoid(ShooterConstants.SHOOTER_SOLENOID_2_ID);
+    public final Solenoid ShooterSolenoid3 = new Solenoid(ShooterConstants.SHOOTER_SOLENOID_3_ID);
+    public final Solenoid ShooterSolenoid4 = new Solenoid(ShooterConstants.SHOOTER_SOLENOID_4_ID);
+    public final Solenoid ShooterSolenoid5 = new Solenoid(ShooterConstants.SHOOTER_SOLENOID_5_ID);
+    public final Solenoid ShooterSolenoid6 = new Solenoid(ShooterConstants.SHOOTER_SOLENOID_6_ID);
+    public final Solenoid ShooterSolenoid7 = new Solenoid(ShooterConstants.SHOOTER_SOLENOID_7_ID);    
 }
