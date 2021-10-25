@@ -105,15 +105,15 @@ public class RobotContainer {
         
         /* TODO: Check if these binds work */
         /* Cycle Between Solenoids */
-        new JoystickButton(getOperatorJoystick(), XboxController.DPAD_LEFT)
+        new JoystickButton(getOperatorJoystick(), XboxController.LEFT_BUMPER_BUTTON)
                 .whenPressed(() -> m_robotShooter.CycleDown());
         
-        new JoystickButton(getOperatorJoystick(), XboxController.DPAD_RIGHT)
+        new JoystickButton(getOperatorJoystick(), XboxController.RIGHT_BUMPER_BUTTON)
                 .whenPressed(() -> m_robotShooter.CycleUp());
         
         /* Fire All of the Solenoids In the Shooter Array */
         /* Extra power. this will be truly worth "I Survived the T Shirt Cannon" T-shirt */
-        new JoystickButton(getOperatorJoystick(), XboxController.DPAD_DOWN)
+        new JoystickButton(getOperatorJoystick(), XboxController.X_BUTTON)
                 .whenPressed(() -> m_robotShooter.ShootTubeALL(true))
                 .whenReleased(() -> m_robotShooter.ShootTubeALL(false));
         
@@ -133,6 +133,7 @@ public class RobotContainer {
     /**
      * Add your docs here.
      */
+    /* No I don't think i will */
     public IHandController getDriverController() {
         return m_driverXbox;
     }
@@ -140,6 +141,7 @@ public class RobotContainer {
     /**
      * Add your docs here.
      */
+    /* No I don't think i will */
     public IHandController getOperatorController() {
         return m_operatorXbox;
     }
@@ -147,6 +149,7 @@ public class RobotContainer {
     /**
      * Add your docs here.
      */
+    /* No I don't think i will */
     public Joystick getOperatorJoystick() {
         return m_operatorXbox.getJoyStick();
     }
@@ -154,6 +157,7 @@ public class RobotContainer {
     /**
      * Add your docs here.
      */
+    /* No I don't think i will */
     public Joystick getDriverJoystick() {
         return m_driverXbox.getJoyStick();
     }

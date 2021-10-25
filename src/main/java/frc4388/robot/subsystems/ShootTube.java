@@ -15,7 +15,7 @@ public class ShootTube extends SubsystemBase {
     int m_cycleCount = 0;
     int m_maxCount;
     public ShootTube(Solenoid[] solenoids) {
-        m_solenoids = solenoidArray;
+        m_solenoids = solenoids;
         m_maxCount = m_solenoids.length;
     }
     /* 
