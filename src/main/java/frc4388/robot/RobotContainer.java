@@ -1,3 +1,4 @@
+/* Dumb Command Version, Smart Subsytem Version */
 /*----------------------------------------------------------------------------*/
 /* Copyright (c) 2018-2019 FIRST. All Rights Reserved.                        */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
@@ -15,6 +16,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc4388.robot.Constants.*;
 import frc4388.robot.subsystems.Drive;
 import frc4388.robot.subsystems.Horn;
+import frc4388.robot.subsystems.ShootTube;
 import frc4388.robot.subsystems.LED;
 import frc4388.utility.LEDPatterns;
 import frc4388.utility.controller.IHandController;
@@ -39,11 +41,7 @@ public class RobotContainer {
     
     private final Horn m_robotHorn = new Horn(m_robotMap.HornSolenoid);
 
-    /* Controllers */
-    private final XboxController m_driverXbox = new XboxController(OIConstants.XBOX_DRIVER_ID);
-    private final XboxController m_operatorXbox = new XboxController(OIConstants.XBOX_OPERATOR_ID);
-
-    private final Solenoid[] tubes = {
+    private final Solenoid[] SolenoidArray = {
         m_robotMap.ShooterSolenoid0, 
         m_robotMap.ShooterSolenoid1,
         m_robotMap.ShooterSolenoid2,
@@ -51,7 +49,15 @@ public class RobotContainer {
         m_robotMap.ShooterSolenoid4,
         m_robotMap.ShooterSolenoid5,
         m_robotMap.ShooterSolenoid6,
-        m_robotMap.ShooterSolenoid7};
+        m_robotMap.ShooterSolenoid7
+        };
+
+    private final ShootTube m_robotShooter = new ShootTube(SolenoidArray);
+
+    /* Controllers */
+    private final XboxController m_driverXbox = new XboxController(OIConstants.XBOX_DRIVER_ID);
+    private final XboxController m_operatorXbox = new XboxController(OIConstants.XBOX_OPERATOR_ID);
+
 
     /**
      * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -87,15 +93,29 @@ public class RobotContainer {
                 .whenPressed(() -> m_robotLED.setPattern(LEDPatterns.LAVA_RAINBOW))
                 .whenReleased(() -> m_robotLED.setPattern(LEDConstants.DEFAULT_PATTERN));
         */
-        // Fire horn
+        /* Fire horn */
         new JoystickButton(getOperatorJoystick(), XboxController.LEFT_TRIGGER_AXIS)
                 .whenPressed(() -> m_robotHorn.hornSet(true))
                 .whenReleased(() -> m_robotHorn.hornSet(false));
         
+        /* Shoot T-Shirt */
         new JoystickButton(getOperatorJoystick(), XboxController.RIGHT_TRIGGER_AXIS)
-                .whenPressed(() -> new ShootYourShot(true)) /*Fire one per once triger*/
-                .whenReleased(() -> new ShootYourShot(false));
+                .whenPressed(() -> m_robotShooter.ShootTubeSet(true))
+                .whenReleased(() -> m_robotShooter.ShootTubeSet(false));
         
+        /* TODO: Check if these binds work */
+        /* Cycle Between Solenoids */
+        new JoystickButton(getOperatorJoystick(), XboxController.DPAD_LEFT)
+                .whenPressed(() -> m_robotShooter.CycleDown());
+        
+        new JoystickButton(getOperatorJoystick(), XboxController.DPAD_RIGHT)
+                .whenPressed(() -> m_robotShooter.CycleUp());
+        
+        /* Fire All of the Solenoids In the Shooter Array */
+        /* Extra power. this will be truly worth "I Survived the T Shirt Cannon" T-shirt */
+        new JoystickButton(getOperatorJoystick(), XboxController.DPAD_DOWN)
+                .whenPressed(() -> m_robotShooter.ShootTubeALL(true))
+                .whenReleased(() -> m_robotShooter.ShootTubeALL(false));
         
         
     }
