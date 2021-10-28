@@ -1,4 +1,3 @@
-/* Dumb Command Version, Smart Subsytem Version */
 /*----------------------------------------------------------------------------*/
 /* Copyright (c) 2018-2019 FIRST. All Rights Reserved.                        */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
@@ -54,6 +53,7 @@ public class RobotContainer {
 
     private final ShootTube m_robotShooter = new ShootTube(SolenoidArray);
 
+    private final DPrinter m_debugLogger = m_robotMap.DPrinter
     /* Controllers */
     private final XboxController m_driverXbox = new XboxController(OIConstants.XBOX_DRIVER_ID);
     private final XboxController m_operatorXbox = new XboxController(OIConstants.XBOX_OPERATOR_ID);
@@ -116,6 +116,10 @@ public class RobotContainer {
         new JoystickButton(getOperatorJoystick(), XboxController.X_BUTTON)
                 .whenPressed(() -> m_robotShooter.ShootTubeALL(true))
                 .whenReleased(() -> m_robotShooter.ShootTubeALL(false));
+        
+        /* Just A test of the DPrint object */
+        new JoystickButton(getOperatorJoystick(), XboxController.B_BUTTON)
+                .whenPressed(() -> m_debugLogger.println("This is a Debug Message"));
         
         
     }

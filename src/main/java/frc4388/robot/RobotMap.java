@@ -19,6 +19,7 @@ import frc4388.robot.Constants.DriveConstants;
 import frc4388.robot.Constants.HornConstants;
 import frc4388.robot.Constants.LEDConstants;
 import frc4388.utility.RobotGyro;
+import frc4388.utility.DPrint;
 
 /**
  * Defines and holds all I/O objects on the Roborio. This is useful for unit
@@ -81,5 +82,8 @@ public class RobotMap {
     public final Solenoid ShooterSolenoid4 = new Solenoid(ShooterConstants.SHOOTER_SOLENOID_4_ID);
     public final Solenoid ShooterSolenoid5 = new Solenoid(ShooterConstants.SHOOTER_SOLENOID_5_ID);
     public final Solenoid ShooterSolenoid6 = new Solenoid(ShooterConstants.SHOOTER_SOLENOID_6_ID);
-    public final Solenoid ShooterSolenoid7 = new Solenoid(ShooterConstants.SHOOTER_SOLENOID_7_ID);    
+    public final Solenoid ShooterSolenoid7 = new Solenoid(ShooterConstants.SHOOTER_SOLENOID_7_ID);
+
+    /* DPrint Utility */
+    public final DPrint DPrinter = new DPrint(DebugConstants.TYPE_INFO);
 }
