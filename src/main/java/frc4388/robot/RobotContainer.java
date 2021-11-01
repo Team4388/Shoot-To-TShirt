@@ -53,7 +53,7 @@ public class RobotContainer {
 
     private final ShootTube m_robotShooter = new ShootTube(SolenoidArray);
 
-    private final DPrinter m_debugLogger = m_robotMap.DPrinter
+    private final DPrinter m_debugLogger = m_robotMap.DPrinter;
     /* Controllers */
     private final XboxController m_driverXbox = new XboxController(OIConstants.XBOX_DRIVER_ID);
     private final XboxController m_operatorXbox = new XboxController(OIConstants.XBOX_OPERATOR_ID);
@@ -94,16 +94,15 @@ public class RobotContainer {
                 .whenReleased(() -> m_robotLED.setPattern(LEDConstants.DEFAULT_PATTERN));
         */
         /* Fire horn */
-        new JoystickButton(getOperatorJoystick(), XboxController.LEFT_TRIGGER_AXIS)
+        new JoystickButton(getOperatorJoystick(), XboxController.LEFT_TRIGGER)
                 .whenPressed(() -> m_robotHorn.hornSet(true))
                 .whenReleased(() -> m_robotHorn.hornSet(false));
         
-        /* Shoot T-Shirt */
-        new JoystickButton(getOperatorJoystick(), XboxController.RIGHT_TRIGGER_AXIS)
+        /* Shoot T-Shirt, Also cycles the array */
+        new JoystickButton(getOperatorJoystick(), XboxController.RIGHT_TRIGGER)
                 .whenPressed(() -> m_robotShooter.ShootTubeSet(true))
                 .whenReleased(() -> m_robotShooter.ShootTubeSet(false));
         
-        /* TODO: Check if these binds work */
         /* Cycle Between Solenoids */
         new JoystickButton(getOperatorJoystick(), XboxController.LEFT_BUMPER_BUTTON)
                 .whenPressed(() -> m_robotShooter.CycleDown());

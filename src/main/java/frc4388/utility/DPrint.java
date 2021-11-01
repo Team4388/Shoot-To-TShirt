@@ -8,7 +8,7 @@ public class DPrint {
     public DPrint(str type) {
         m_debugMsgType = type;
     }
-    public println(str[] mesage) {
+    public println(str mesage) {
         switch (m_debugMsgType) {
             case DebugConstants.TYPE_INFO:
             if (DebugConstants.SHOW_INFO) {
@@ -19,7 +19,7 @@ public class DPrint {
             ;
         }
     }
-    public print(str[] mesage) {
+    public print(str mesage) {
         switch (m_debugMsgType) {
             case DebugConstants.TYPE_INFO:
             if (DebugConstants.SHOW_INFO) {
