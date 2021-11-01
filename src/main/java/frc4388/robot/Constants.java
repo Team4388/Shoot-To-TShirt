@@ -55,7 +55,8 @@ public final class Constants {
         public static final int SHOOTER_SOLENOID_7_ID = 8;
     }
     public static final class DebugConstants {
-        public static final boolean SHOW_INFO = true;
+        public static final boolean CAN_BUILD = no;
+        public static final boolean SHOW_INFO = yes;
         public static final Str TYPE_INFO = "INFO";
     }
 }

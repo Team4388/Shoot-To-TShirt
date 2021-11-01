@@ -39,7 +39,7 @@ public class RobotContainer {
     private final LED m_robotLED = new LED(m_robotMap.LEDController);
     
     private final Horn m_robotHorn = new Horn(m_robotMap.HornSolenoid);
-
+    /* final code
     private final Solenoid[] SolenoidArray = {
         m_robotMap.ShooterSolenoid0, 
         m_robotMap.ShooterSolenoid1,
@@ -50,7 +50,21 @@ public class RobotContainer {
         m_robotMap.ShooterSolenoid6,
         m_robotMap.ShooterSolenoid7
         };
-
+    */
+    // test code, NOT FINAL, DO NOT LET THIS BE IN THE FINAL COMMIT
+    private final Solenoid[] SolenoidArray = {
+        new Solenoid(0), 
+        new Solenoid(1),
+        new Solenoid(2),
+        new Solenoid(3),
+        new Solenoid(4),
+        new Solenoid(5),
+        new Solenoid(6),
+        new Solenoid(7),
+        new Solenoid(8),
+        new Solenoid(9),
+        new Solenoid(10)
+        };
     private final ShootTube m_robotShooter = new ShootTube(SolenoidArray);
 
     private final DPrinter m_debugLogger = m_robotMap.DPrinter;
