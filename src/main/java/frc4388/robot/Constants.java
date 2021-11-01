@@ -56,7 +56,7 @@ public final class Constants {
     }
     public static final class DebugConstants {
         public static final boolean CAN_BUILD = no;
-        public static final boolean SHOW_INFO = yes;
-        public static final Str TYPE_INFO = "INFO";
+        public static final boolean SHOW_INFO = true;
+        public static final String TYPE_INFO = "INFO";
     }
 }

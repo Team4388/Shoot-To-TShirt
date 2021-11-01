@@ -8,6 +8,7 @@
 package frc4388.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
@@ -18,6 +19,7 @@ import frc4388.robot.subsystems.Horn;
 import frc4388.robot.subsystems.ShootTube;
 import frc4388.robot.subsystems.LED;
 import frc4388.utility.LEDPatterns;
+import frc4388.utility.DPrint;
 import frc4388.utility.controller.IHandController;
 import frc4388.utility.controller.XboxController;
 
@@ -67,7 +69,7 @@ public class RobotContainer {
         };
     private final ShootTube m_robotShooter = new ShootTube(SolenoidArray);
 
-    private final DPrinter m_debugLogger = m_robotMap.DPrinter;
+    private final DPrint m_debugLogger = m_robotMap.DPrinter;
     /* Controllers */
     private final XboxController m_driverXbox = new XboxController(OIConstants.XBOX_DRIVER_ID);
     private final XboxController m_operatorXbox = new XboxController(OIConstants.XBOX_OPERATOR_ID);
@@ -101,19 +103,19 @@ public class RobotContainer {
                 .whileHeld(() -> m_robotDrive.driveWithInput(0, 1));
         */
         /* Operator Buttons */
-        // activates ""🔥👌💯" Mode"™⁋
+        // activates "lit" Mode"
         /*
         new JoystickButton(getOperatorJoystick(), XboxController.A_BUTTON)
                 .whenPressed(() -> m_robotLED.setPattern(LEDPatterns.LAVA_RAINBOW))
                 .whenReleased(() -> m_robotLED.setPattern(LEDConstants.DEFAULT_PATTERN));
         */
         /* Fire horn */
-        new JoystickButton(getOperatorJoystick(), XboxController.LEFT_TRIGGER)
+        new JoystickButton(getOperatorJoystick(), XboxController.LEFT_TRIGGER_AXIS)
                 .whenPressed(() -> m_robotHorn.hornSet(true))
                 .whenReleased(() -> m_robotHorn.hornSet(false));
         
         /* Shoot T-Shirt, Also cycles the array */
-        new JoystickButton(getOperatorJoystick(), XboxController.RIGHT_TRIGGER)
+        new JoystickButton(getOperatorJoystick(), XboxController.RIGHT_TRIGGER_AXIS)
                 .whenPressed(() -> m_robotShooter.ShootTubeSet(true))
                 .whenReleased(() -> m_robotShooter.ShootTubeSet(false));
         

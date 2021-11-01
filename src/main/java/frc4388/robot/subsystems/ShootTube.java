@@ -7,13 +7,13 @@ package frc4388.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc4388.utility.DPrint;
 import frc4388.robot.Constants.DebugConstants;
-import edu.wpi.first.wbilib.Solnoid;
-
-DPrint DPrinter = new DPrint(DebugConstants.TYPE_INFO) 
+import edu.wpi.first.wpilibj.Solenoid;
+ 
 public class ShootTube extends SubsystemBase {
     Solenoid[] m_solenoids;
     int m_cycleCount = 0;
     int m_maxCount;
+    DPrint m_DPrinter = new DPrint(DebugConstants.TYPE_INFO);
     public ShootTube(Solenoid[] solenoids) {
         m_solenoids = solenoids;
         m_maxCount = m_solenoids.length;
@@ -27,21 +27,21 @@ public class ShootTube extends SubsystemBase {
         if (m_cycleCount >= m_maxCount || m_cycleCount < 0) {
             m_cycleCount = 0;
         }
-        DPrinter.println("Current CycleCount: "+m_cycleCount)
+        m_DPrinter.println("Current CycleCount: "+m_cycleCount);
     }
     public void CycleDown() {
         m_cycleCount--;
         if (m_cycleCount >= m_maxCount || m_cycleCount < 0) {
             m_cycleCount = 0;
         }
-        DPrinter.println("Current CycleCount: "+m_cycleCount)
+        m_DPrinter.println("Current CycleCount: "+m_cycleCount);
     }
     /*
     Normal Shoot Tube and Normal Shoot Tube Index Functions
     */
     /* Function "ShootTubeSet" cycles up automaticly */
     public void ShootTubeSet(Boolean arg) {
-        m_solenoids[CycleCount].set(arg);
+        m_solenoids[m_cycleCount].set(arg);
         /* If closing valve: 
         Increse the CycleCount by one, 
         if the CycleCount >= the length of the array OR CycleCount < 0:
@@ -52,7 +52,7 @@ public class ShootTube extends SubsystemBase {
                 m_cycleCount = 0;
             }
         }
-        DPrinter.println("Current CycleCount: "+m_cycleCount)
+        m_DPrinter.println("Current CycleCount: "+m_cycleCount);
     }
     /* Function "ShootTubeIndex" won't cycle up automaticly */
     /* Not used, yet Useful */
