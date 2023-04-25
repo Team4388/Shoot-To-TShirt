@@ -40,7 +40,7 @@ public class RobotContainer {
 
     private final LED m_robotLED = new LED(m_robotMap.LEDController);
     
-    private final Horn m_robotHorn = new Horn(m_robotMap.HornSolenoid);
+    //private final Horn m_robotHorn = new Horn(m_robotMap.HornSolenoid);
     /* final code
     private final Solenoid[] SolenoidArray = {
         m_robotMap.ShooterSolenoid0, 
@@ -61,11 +61,6 @@ public class RobotContainer {
         new Solenoid(3),
         new Solenoid(4),
         new Solenoid(5),
-        new Solenoid(6),
-        new Solenoid(7),
-        new Solenoid(8),
-        new Solenoid(9),
-        new Solenoid(10)
         };
     private final ShootTube m_robotShooter = new ShootTube(SolenoidArray);
 
@@ -110,14 +105,19 @@ public class RobotContainer {
                 .whenReleased(() -> m_robotLED.setPattern(LEDConstants.DEFAULT_PATTERN));
         */
         /* Fire horn */
-        new JoystickButton(getOperatorJoystick(), XboxController.LEFT_TRIGGER_AXIS)
+        /*new JoystickButton(getOperatorJoystick(), XboxController.LEFT_TRIGGER_AXIS)
                 .whenPressed(() -> m_robotHorn.hornSet(true))
                 .whenReleased(() -> m_robotHorn.hornSet(false));
-        
+        */
         /* Shoot T-Shirt, Also cycles the array */
-        new JoystickButton(getOperatorJoystick(), XboxController.RIGHT_TRIGGER_AXIS)
+        new JoystickButton(getOperatorJoystick(), XboxController.A_BUTTON)
                 .whenPressed(() -> m_robotShooter.ShootTubeSet(true))
                 .whenReleased(() -> m_robotShooter.ShootTubeSet(false));
+        
+
+        new JoystickButton(getOperatorJoystick(), XboxController.Y_BUTTON)
+                .whenPressed(() -> m_robotShooter.ShootTubeIndex(true, 0))
+                .whenReleased(() -> m_robotShooter.ShootTubeIndex(false, 0));
         
         /* Cycle Between Solenoids */
         new JoystickButton(getOperatorJoystick(), XboxController.LEFT_BUMPER_BUTTON)
